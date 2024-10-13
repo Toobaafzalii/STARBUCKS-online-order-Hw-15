@@ -3,7 +3,6 @@ import { FaMinus } from "react-icons/fa6";
 
 export default function Counter(props: IcounterProps) {
   const { onQtyChange, quantity } = props;
-  console.log(quantity);
   const minusQty = () => {
     if (quantity > 0) {
       onQtyChange(quantity - 1);

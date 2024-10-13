@@ -42,15 +42,17 @@ export default function App() {
       setBillData(JSON.parse(storageBillData));
     }
   }, []);
+  useEffect(() => {
+    console.log(billData);
+  }, [billData]);
   const onQtyChange = (itemsArray: Iitem[]) => {
-    console.log(itemsArray, "ok");
     setBillData(itemsArray);
     localStorage.setItem("bill-data", JSON.stringify(itemsArray));
   };
 
   const handleSubmit = () => {
+    setBillData((data) => data.map((item) => ({ ...item, quantity: 0 })));
     localStorage.removeItem("bill-data");
-    setBillData(BILL_DATA);
     alert("THANKS FOR YOUR ORDER");
   };
 
