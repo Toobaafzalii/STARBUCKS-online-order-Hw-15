@@ -1,18 +1,10 @@
-import { useEffect, useState } from "react";
 import Counter from "./counter";
 export default function ItemMenuCard(props: ImenuProps) {
-  const [itemData, setItemData] = useState({
-    name: props.item.name,
-    quantity: 0,
-  });
-  useEffect(() => {
-    props.onQtyChange(itemData);
-  }, [itemData]);
   const onQtyChange = (state: number) => {
-    setItemData((prevItemData) => ({
-      ...prevItemData,
+    props.onQtyChange({
+      name: props.item.name,
       quantity: state,
-    }));
+    });
   };
 
   return (
@@ -26,7 +18,7 @@ export default function ItemMenuCard(props: ImenuProps) {
           {`$${props.item.price}`}
         </h2>
       </div>
-      <Counter onQtyChange={onQtyChange} />
+      <Counter onQtyChange={onQtyChange} quantity={props.item.quantity} />
     </div>
   );
 }

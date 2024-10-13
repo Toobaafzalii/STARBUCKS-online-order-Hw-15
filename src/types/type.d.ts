@@ -8,6 +8,7 @@ interface Iitem {
   
   interface IcounterProps {
     onQtyChange : (state: number) => void
+    quantity: number
   }
 
   interface ImenuProps {
@@ -17,6 +18,7 @@ interface Iitem {
 
 interface ImenuContainerProps {
     onQtyChange : (state: Iitem[]) => void
+    data: Iitem[]
 }
 
 interface IbillContainerProps {
